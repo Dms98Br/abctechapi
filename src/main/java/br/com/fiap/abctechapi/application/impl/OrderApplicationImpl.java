@@ -11,13 +11,13 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 @Component
-public class OrderApplicationImpl  implements OrderApplication {
+public class OrderApplicationImpl implements OrderApplication {
     private OrderService orderService;
     public OrderApplicationImpl(OrderService orderService){
         this.orderService = orderService;
     }
     @Override
-    public void createOrder(OrderDto orderDto){
+    public void createOrder(OrderDto orderDto)throws Exception{
         Order order = new Order();
         order.setOperatorId(orderDto.getOperatorId());
         order.setStartOrderLocation(
