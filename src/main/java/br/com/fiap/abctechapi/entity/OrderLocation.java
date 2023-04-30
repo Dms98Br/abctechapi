@@ -5,20 +5,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "assistances")
-public class Assistance {
+@Table(name = "orderlocation")
+public class OrderLocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "latitude")
+    private Double latitude;
+    @Column(name="longitude")
+    private Double longitude;
+    @Column(name="date")
+    private Timestamp date;
 
-    @Column(name = "name", nullable = false, length = 150)
-    private String name;
-
-    @Column(name = "description", nullable = false)
-    private String description;
 }
