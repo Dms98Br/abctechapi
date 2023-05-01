@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -34,8 +35,9 @@ public class OrderServiceImpl implements OrderService {
         ArrayList<Assistance> list = new ArrayList<>();
         assistsId.forEach(id-> {
 
-            Assistance assistance = assistanceRepository.findById(id).orElseThrow();
-            list.add(assistance);
+            Optional<Assistance> assistance = assistanceRepository.findById(id);
+            assistance.ifPresent(list::add);
+
         });
         if (list.isEmpty()){
             throw new MinimumAssistRequiredException("Error nas assistências", "Não encontramos nenhuma assistência valida");
@@ -43,6 +45,7 @@ public class OrderServiceImpl implements OrderService {
             throw new MaximumAssistException("Error nas assistências", "Não devemos enviar mais de 15 assistências");
         }
         order.setAssists(list);
+        System.out.println(order);
         orderRepository.save(order);
     }
 }

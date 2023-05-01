@@ -11,16 +11,17 @@ import java.sql.Timestamp;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "orderlocation")
 public class OrderLocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "latitude")
     private Double latitude;
-    @Column(name="longitude")
-    private Double longitude;
-    @Column(name="date")
-    private Timestamp date;
 
+    @Column(name = "longitude")
+    private Double longitude;
+
+    @Column(name = "date")
+    private Timestamp date;
 }

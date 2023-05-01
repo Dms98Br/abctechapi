@@ -29,7 +29,6 @@ public class Order {
     @JoinColumn(name = "start_order_location_id", foreignKey = @ForeignKey(name = "FK_start_order_id"))
     private OrderLocation startOrderLocation;
 
-
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "end_order_location_id", foreignKey = @ForeignKey(name = "FK_end_order_id"))
     private OrderLocation endOrderLocation;
