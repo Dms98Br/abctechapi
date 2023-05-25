@@ -19,6 +19,8 @@ public class OrderApplicationImpl implements OrderApplication {
     @Override
     public void createOrder(OrderDto orderDto)throws Exception{
         Order order = new Order();
+        System.out.println(order);
+        System.out.println(orderDto);
         order.setOperatorId(orderDto.getOperatorId());
         order.setStartOrderLocation(
                 new OrderLocation(null,
